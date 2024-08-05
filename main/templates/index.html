@@ -1,0 +1,41 @@
+{% extends 'layouts/base.html' %}
+
+{% block content %}
+
+{% load static %}
+
+<main class="container py-5">
+    <section class="card card-body">
+        {% if user.is_authenticated %}
+
+        <div class="text-center">
+            <a href="{% url 'venta' %}" class="btn btn-dark">Venta</a>
+            <a href="{% url 'alquiler' %}" class="btn btn-dark">Alquiler</a>
+        </div>
+
+        {% endif %}
+
+
+        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Mollitia distinctio non optio consequatur! Quis sequi dicta explicabo voluptatem repellendus pariatur tempora inventore sunt aspernatur animi ipsam porro, odio tenetur molestiae assumenda suscipit cum nemo! Eligendi itaque repudiandae laudantium voluptatum id nihil, non neque doloribus error ea placeat dolores ut. Sapiente!</p>
+
+        <center>
+            <img src="{% static 'rv.webp' %}" alt="" width="600">
+        </center>
+
+        {% if not user.is_authenticated %}
+
+        <div class="text-center mt-2">
+            <a href="{% url 'signup' %}" class="btn btn-dark">Signup</a>
+            <a href="{% url 'login' %}" class="btn btn-dark">Login</a>
+            
+        </div>
+
+        {% endif %}
+
+    </section>
+</main>
+
+
+
+
+{% endblock %}

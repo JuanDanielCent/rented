@@ -1,0 +1,42 @@
+{% extends 'layouts/base.html' %}
+
+{% block content %}
+
+
+
+<main class="container">
+    <div class="row">
+        <div class="col-md-6 offset-md-3">
+            <ul class="list-group">
+                {% for i in propiedad %}
+                
+                <li class="list-group-item mt-3">
+                    <p>📌{{i.department}}</p>
+                    <h2>{{i.title}}</h2>
+                    <p>{{i.description}}</p>
+                    <p>${{i.price}}</p>
+                    <div class="mt-5 d-flex">
+                        <p>🛁{{i.bathrooms}}</p> 
+                        <p>🛏️{{i.bedrooms}}</p>
+                        <p>🚘{{i.parking}}</p>
+                    </div>
+                    <p>Publicado por: {{i.user.username}}</p>
+
+                    {% if i.user == user %}
+
+                        <div>
+                            <a href="{% url 'update_alquiler' i.id %}" class="btn btn-dark">Update</a>
+                            <a href="{% url 'delete_alquiler' i.id %}" class="btn btn-dark">Delete</a>
+                        </div>
+
+
+                    {% endif %}
+                </li>
+                {% endfor %}
+            </ul>
+        </div>
+    </div>
+</main>
+
+
+{% endblock %}
